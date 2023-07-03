@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Where are the bosses?</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+<center>
+    <p>
+    <h2>Where are the bosses?</h2>
+    <i>by wadiowarrior</i>
+    </p>
+    <p id="where"></p>
+    <p>
+        <a href="https://discord.gg/g5cwTTEnUJ">Join the EFT SEA Discord</a>
+    </p>
+</center>
+<script>
+    // let nowMoscow = new Date().toLocaleString("en-US", {timeZone: "Europe/Moscow"});
+    let now = moment();
+    let nowMoscow = moment().utcOffset(180);
+
+    let whereBoss = "";
+
+    let nowMoscowHour = nowMoscow.hours();
+
+    if(nowMoscowHour >= 13 && nowMoscowHour <= 17) {
+        // reserve
+        whereBoss = "Reserve (Mil. Base)";
+    } else if(nowMoscowHour >= 18 && nowMoscowHour < 22) {
+        // customs
+
+        whereBoss = "Customs (Terminal)";
+    } else if(nowMoscowHour >= 22 || nowMoscowHour < 2) {
+        // shoreline
+
+        whereBoss = "Shoreline (Sanatorium)";
+    } else if(nowMoscowHour >= 3 && nowMoscowHour < 7) {
+
+        whereBoss = "Interchange (Ultra)";
+    } else {
+
+        whereBoss = "their normal places";
+    }
+
+    document.getElementById("where").innerHTML = "Time now in Moscow: " + nowMoscow.format("HH:mm a")
+        + "<br>Time now where you are: " + now.format("HH:mm a")
+        + "<br><br>MOSCOW HOUR: " + nowMoscowHour
+        + "<br><h3>Bosses are at: " + whereBoss + "</h3>";
+
+
+</script></body>
+</html>

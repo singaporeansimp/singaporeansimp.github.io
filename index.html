@@ -26,18 +26,18 @@
 
     let nowMoscowHour = nowMoscow.hours();
 
-    if(nowMoscowHour >= 13 && nowMoscowHour <= 17) {
+    if(nowMoscowHour >= 8 && nowMoscowHour < 12) {
         // reserve
         whereBoss = "Reserve (Mil. Base)";
-    } else if(nowMoscowHour >= 18 && nowMoscowHour < 22) {
+    } else if(nowMoscowHour >= 13 && nowMoscowHour < 17) {
         // customs
 
         whereBoss = "Customs (Terminal)";
-    } else if(nowMoscowHour >= 22 || nowMoscowHour < 2) {
+    } else if(nowMoscowHour >= 17 && nowMoscowHour <= 21) {
         // shoreline
 
         whereBoss = "Shoreline (Sanatorium)";
-    } else if(nowMoscowHour >= 3 && nowMoscowHour < 7) {
+    } else if(nowMoscowHour >= 22 || nowMoscowHour < 2) {
 
         whereBoss = "Interchange (Ultra)";
     } else {

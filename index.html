@@ -101,8 +101,9 @@
             "Tagilla & Killa @ Resort west wing<br>" +
             "Shturman @ Weather station<br>" +
             "Glukhar @ Pier";
-    } else if(nowMoscowHour >= 22 && nowMoscowHour < 2) {
+    } else if(nowMoscowHour >= 22 || nowMoscowHour < 2) {
         // interchange
+		// thanks to valdetero on reddit for the logic correction
         whereBoss = "Interchange (Ultra)";
         bossDetails = "Sanitar @ Goshan<br>" +
             "Tagilla & Killa @ Food court (second floor, OLI side)<br>" +

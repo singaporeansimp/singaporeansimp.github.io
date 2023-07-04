@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Where are the bosses?</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        setTimeout(() => {location.reload();}, 60000);
+    </script>
 </head>
 <body>
 
@@ -13,9 +17,54 @@
     <i>by wadiowarrior</i>
     </p>
     <p id="where"></p>
-    <p>
-        <a href="https://discord.gg/g5cwTTEnUJ">Join the EFT SEA Discord</a>
-    </p>
+    <p><style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0;}
+        .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+            overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+            font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+        .tg .tg-baqh{text-align:center;vertical-align:top}
+        .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+        @media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;}}</style>
+    <div class="tg-wrap"><table class="tg">
+        <thead>
+        <tr>
+            <th class="tg-amwm">MSK TIME</th>
+            <th class="tg-baqh"><span style="font-weight:bold">LOCATION</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="tg-baqh">08:00 - 12:00</td>
+            <td class="tg-baqh">RESERVE</td>
+        </tr>
+        <tr>
+            <td class="tg-baqh">12:00 - 13:00</td>
+            <td class="tg-baqh">--</td>
+        </tr>
+        <tr>
+            <td class="tg-baqh">13:00 - 17:00</td>
+            <td class="tg-baqh">CUSTOMS</td>
+        </tr>
+        <tr>
+            <td class="tg-baqh">17:00 - 21:00 </td>
+            <td class="tg-baqh">SHORELINE</td>
+        </tr>
+        <tr>
+            <td class="tg-baqh">21:00 - 22:00</td>
+            <td class="tg-baqh">--</td>
+        </tr>
+        <tr>
+            <td class="tg-baqh">22:00 - 02:00</td>
+            <td class="tg-baqh">INTERCHANGE</td>
+        </tr>
+        <tr>
+            <td class="tg-baqh">02:00 - 08:00</td>
+            <td class="tg-baqh">--</td>
+        </tr>
+        </tbody>
+    </table></div></p>
+
 </center>
 <script>
     // let nowMoscow = new Date().toLocaleString("en-US", {timeZone: "Europe/Moscow"});
@@ -26,18 +75,18 @@
 
     let nowMoscowHour = nowMoscow.hours();
 
-    if(nowMoscowHour >= 8 && nowMoscowHour < 12) {
+    if(nowMoscowHour >= 13 && nowMoscowHour <= 17) {
         // reserve
         whereBoss = "Reserve (Mil. Base)";
-    } else if(nowMoscowHour >= 13 && nowMoscowHour < 17) {
+    } else if(nowMoscowHour >= 18 && nowMoscowHour < 22) {
         // customs
 
         whereBoss = "Customs (Terminal)";
-    } else if(nowMoscowHour >= 17 && nowMoscowHour < 21) {
+    } else if(nowMoscowHour >= 22 || nowMoscowHour < 2) {
         // shoreline
 
         whereBoss = "Shoreline (Sanatorium)";
-    } else if(nowMoscowHour >= 22 || nowMoscowHour < 2) {
+    } else if(nowMoscowHour >= 3 && nowMoscowHour < 7) {
 
         whereBoss = "Interchange (Ultra)";
     } else {

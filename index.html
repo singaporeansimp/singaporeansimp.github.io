@@ -32,7 +32,7 @@
         <tbody>
         <tr>
             <td class="tg-baqh">02:00 - 08:00</td>
-            <td class="tg-baqh">--</td>
+            <td class="tg-baqh">WOODS</td>
         </tr>
         <tr>
             <td class="tg-baqh">08:00 - 12:00</td>
@@ -40,7 +40,7 @@
         </tr>
         <tr>
             <td class="tg-baqh">12:00 - 13:00</td>
-            <td class="tg-baqh">--</td>
+            <td class="tg-baqh">WOODS</td>
         </tr>
         <tr>
             <td class="tg-baqh">13:00 - 17:00</td>
@@ -52,7 +52,7 @@
         </tr>
         <tr>
             <td class="tg-baqh">21:00 - 22:00</td>
-            <td class="tg-baqh">--</td>
+            <td class="tg-baqh">WOODS</td>
         </tr>
         <tr>
             <td class="tg-baqh">22:00 - 02:00</td>
@@ -83,34 +83,44 @@
     if(nowMoscowHour >= 8 && nowMoscowHour < 12) {
         // reserve
         whereBoss = "Reserve (Mil. Base)";
+        bossDetails = "Sanitar @ Underground food bunker<br>" +
+            "Reshala @ Black bishop + black pawn<br>" +
+            "Tagilla & Gilla @ White knight<br>" +
+            "Shturman @ Black knight<br>" +
+            "Glukhar @ K buildings near train";
     } else if(nowMoscowHour >= 13 && nowMoscowHour < 17) {
         // customs
 
         whereBoss = "Customs (Terminal)";
+        bossDetails = "Sanitar @ New Gas<br>" +
+            "Reshala @ Dorms<br>" +
+            "Tagilla & Killa @ Old Gas<br>" +
+            "Shturman @ Shipping yard / 3 warehouses<br>" +
+            "Glukhar @ ZB-013 / fortress";
     } else if(nowMoscowHour >= 17 && nowMoscowHour < 21) {
         // shoreline
 
         whereBoss = "Shoreline (Sanatorium)";
-        bossDetails = "Sanitar @ usual town spawn<br>" +
-            "Reshala @ Resort<br>" +
-            "Tagilla & Killa @ Resort<br>" +
-            "Reshala @ Resort<br>" +
-            "Shturman @ Weather station";
+        bossDetails = "Sanitar @ Cottage / usual spawn<br>" +
+            "Reshala @ Resort east wing<br>" +
+            "Tagilla & Killa @ Resort west wing<br>" +
+            "Shturman @ Weather station<br>" +
+            "Glukhar @ Pier";
     } else if(nowMoscowHour >= 22 && nowMoscowHour < 2) {
 
         whereBoss = "Interchange (Ultra)";
         bossDetails = "Sanitar @ Goshan<br>" +
-            "Tagilla & Killa @ Food court (second floor)<br>" +
+            "Tagilla & Killa @ Food court (second floor, OLI side)<br>" +
             "Reshala @ OLI<br>" +
             "Glukhar @ near KIBA<br>" +
-            "Shturman @ IDEA";
+            "Shturman @ IDEA (or right ouside)";
     } else {
 
-        whereBoss = "their normal places / Woods";
-        bossDetails = "Sanitar @ Scav Bunker<br>" +
+        whereBoss = "Woods";
+        bossDetails = "Sanitar @ Scav bunker<br>" +
             "Tagilla & Killa @ Checkpoint<br>" +
-            "Reshala @ Sunken Village<br>" +
-            "Glukhar @ Scav Village<br>" +
+            "Reshala @ Sunken village<br>" +
+            "Glukhar @ Scav village (northeast of map)<br>" +
             "Shturman @ Sawmill";
     }
 

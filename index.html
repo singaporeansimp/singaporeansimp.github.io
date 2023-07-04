@@ -40,7 +40,7 @@
         </tr>
         <tr>
             <td class="tg-baqh">12:00 - 13:00</td>
-            <td class="tg-baqh">WOODS</td>
+            <td class="tg-baqh">--</td>
         </tr>
         <tr>
             <td class="tg-baqh">13:00 - 17:00</td>
@@ -52,7 +52,7 @@
         </tr>
         <tr>
             <td class="tg-baqh">21:00 - 22:00</td>
-            <td class="tg-baqh">WOODS</td>
+            <td class="tg-baqh">--</td>
         </tr>
         <tr>
             <td class="tg-baqh">22:00 - 02:00</td>
@@ -107,21 +107,24 @@
             "Shturman @ Weather station<br>" +
             "Glukhar @ Pier";
     } else if(nowMoscowHour >= 22 && nowMoscowHour < 2) {
-
+        // interchange
         whereBoss = "Interchange (Ultra)";
         bossDetails = "Sanitar @ Goshan<br>" +
             "Tagilla & Killa @ Food court (second floor, OLI side)<br>" +
             "Reshala @ OLI<br>" +
             "Glukhar @ near KIBA<br>" +
             "Shturman @ IDEA (or right ouside)";
-    } else {
-
+    } else if(nowMoscowHour >= 2 && nowMoscowHour < 8) {
+        // woods
         whereBoss = "Woods";
         bossDetails = "Sanitar @ Scav bunker<br>" +
             "Tagilla & Killa @ Checkpoint<br>" +
             "Reshala @ Sunken village<br>" +
             "Glukhar @ Scav village (northeast of map)<br>" +
             "Shturman @ Sawmill";
+    } else {
+        whereBoss = "we don't know";
+        bossDetails = "It's unknown where the bosses go during this time. The wiki simply lists it as \"?\"";
     }
 
     document.getElementById("where").innerHTML = "Time now in Moscow: " + nowMoscow.format("HH:mm a")

@@ -61,6 +61,8 @@
         </tbody>
     </table></div></p>
 
+    <p id="bossdet"></p>
+
     <p id="reloadtimer"><i>Page reload timer loading...</i></p>
 
 </center>
@@ -70,6 +72,7 @@
     let nowMoscow = moment().utcOffset(180);
 
     let whereBoss = "";
+    let bossDetails = "";
 
     let nowMoscowHour = nowMoscow.hours();
 
@@ -89,13 +92,20 @@
         whereBoss = "Interchange (Ultra)";
     } else {
 
-        whereBoss = "their normal places";
+        whereBoss = "their normal places / Woods";
+        bossDetails = "Sanitar @ Scav Bunker<br>" +
+            "Tagilla & Killa @ Checkpoint<br>" +
+            "Reshala @ Sunken Village<br>" +
+            "Glukhar @ Old Sawmill / Scav Village<br>" +
+            "Shturman @ ???";
     }
 
     document.getElementById("where").innerHTML = "Time now in Moscow: " + nowMoscow.format("HH:mm a")
         + "<br>Time now where you are: " + now.format("HH:mm a")
         + "<br><br>MOSCOW HOUR: " + nowMoscowHour
         + "<br><h3>Bosses are at: " + whereBoss + "</h3>";
+
+    document.getElementById("bossdet").innerHTML = bossDetails;
 
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));

@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <title>Where are the bosses?</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script>
-        setTimeout(() => {location.reload();}, 60000);
-    </script>
 </head>
 <body>
 
@@ -65,6 +61,8 @@
         </tbody>
     </table></div></p>
 
+    <p id="reloadtimer"><i>Page reload timer loading...</i></p>
+
 </center>
 <script>
     // let nowMoscow = new Date().toLocaleString("en-US", {timeZone: "Europe/Moscow"});
@@ -75,18 +73,18 @@
 
     let nowMoscowHour = nowMoscow.hours();
 
-    if(nowMoscowHour >= 13 && nowMoscowHour <= 17) {
+    if(nowMoscowHour >= 8 && nowMoscowHour < 12) {
         // reserve
         whereBoss = "Reserve (Mil. Base)";
-    } else if(nowMoscowHour >= 18 && nowMoscowHour < 22) {
+    } else if(nowMoscowHour >= 13 && nowMoscowHour < 17) {
         // customs
 
         whereBoss = "Customs (Terminal)";
-    } else if(nowMoscowHour >= 22 || nowMoscowHour < 2) {
+    } else if(nowMoscowHour >= 17 && nowMoscowHour < 21) {
         // shoreline
 
         whereBoss = "Shoreline (Sanatorium)";
-    } else if(nowMoscowHour >= 3 && nowMoscowHour < 7) {
+    } else if(nowMoscowHour >= 22 && nowMoscowHour < 2) {
 
         whereBoss = "Interchange (Ultra)";
     } else {
@@ -99,6 +97,17 @@
         + "<br><br>MOSCOW HOUR: " + nowMoscowHour
         + "<br><h3>Bosses are at: " + whereBoss + "</h3>";
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    var i = 0;
+
+    setInterval(() => {
+        if(i == 60) location.reload();
+        var reloadLeft = 60-i;
+        document.getElementById("reloadtimer").innerHTML = "<i>Refreshing in " + reloadLeft + " seconds</i>";
+        i++;
+    },1000);
 
 </script></body>
 </html>

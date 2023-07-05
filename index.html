@@ -141,8 +141,18 @@
         i++;
     },1000);
 
+    if(localStorage.getItem('theme') == 'dark'){
+	var element = document.body;
+	element.classList.toggle("darkmode");
+    }
+	
     function darkmodeToggle() {
        var element = document.body;
+	    if(element.classList.contains("darkmode")){
+		localStorage.setItem("theme", "light");
+	    }else{
+		localStorage.setItem("theme", "dark");
+	    }
        element.classList.toggle("darkmode");
     }
     

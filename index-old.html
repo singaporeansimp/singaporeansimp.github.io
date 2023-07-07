@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Where are the bosses?</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<center>
+    <p>
+    <button onclick="darkmodeToggle()">Toggle dark mode</button>
+    <p>
+    <h2>Where are the bosses?</h2>
+    <i>by wadiowarrior (<a href="https://discord.gg/g5cwTTEnUJ" target="_blank">find me in the EFT SEA Discord server</a>)</i>
+    </p>
+    <p id="where"></p>
+    <p>
+    <div class="tg-wrap"><table class="tg">
+        <thead>
+        <tr>
+            <th class="tg-amwm">MSK TIME</th>
+            <th class="tg-baqh"><span style="font-weight:bold">LOCATION</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="tg-baqh">02:00 - 08:00</td>
+            <td class="tg-baqh">WOODS</td>
+        </tr>
+        <tr>
+            <td class="tg-baqh">08:00 - 12:00</td>
+            <td class="tg-baqh">RESERVE</td>
+        </tr>
+        <tr>
+            <td class="tg-baqh">12:00 - 13:00</td>
+            <td class="tg-baqh">--</td>
+        </tr>
+        <tr>
+            <td class="tg-baqh">13:00 - 17:00</td>
+            <td class="tg-baqh">CUSTOMS</td>
+        </tr>
+        <tr>
+            <td class="tg-baqh">17:00 - 21:00 </td>
+            <td class="tg-baqh">SHORELINE</td>
+        </tr>
+        <tr>
+            <td class="tg-baqh">21:00 - 22:00</td>
+            <td class="tg-baqh">--</td>
+        </tr>
+        <tr>
+            <td class="tg-baqh">22:00 - 02:00</td>
+            <td class="tg-baqh">INTERCHANGE</td>
+        </tr>
+        </tbody>
+    </table></div></p>
+
+    <p id="bossdet"></p>
+
+    <p><b>Find more info on this event on the EFT wiki!</b> <a href="https://escapefromtarkov.fandom.com/wiki/Hustle#Guide" target="_blank">Click here.</a>
+    <br>
+    This page was created for quick reference so people don't have to do the math calculating different timezones and such...<br>
+    Use if you want to, don't use if you don't. Simple as that!</p>
+    <p id="reloadtimer"><i>Page reload timer loading...</i></p>
+
+</center>
+<script>
+    // let nowMoscow = new Date().toLocaleString("en-US", {timeZone: "Europe/Moscow"});
+    let now = moment();
+    let nowMoscow = moment().utcOffset(180);
+
+    let whereBoss = "";
+    let bossDetails = "";
+
+    let nowMoscowHour = nowMoscow.hours();
+
+    if(nowMoscowHour >= 8 && nowMoscowHour < 12) {
+        // reserve
+        whereBoss = "Reserve (Mil. Base)";
+        bossDetails = "Sanitar @ Underground food bunker<br>" +
+            "Reshala @ Black bishop + black pawn<br>" +
+            "Tagilla & Gilla @ White knight<br>" +
+            "Shturman @ Black knight<br>" +
+            "Glukhar @ K buildings near train";
+    } else if(nowMoscowHour >= 13 && nowMoscowHour < 17) {
+        // customs
+
+        whereBoss = "Customs (Terminal)";
+        bossDetails = "Sanitar @ New Gas<br>" +
+            "Reshala @ Dorms<br>" +
+            "Tagilla & Killa @ Old Gas<br>" +
+            "Shturman @ Shipping yard / 3 warehouses<br>" +
+            "Glukhar @ ZB-013 / fortress";
+    } else if(nowMoscowHour >= 17 && nowMoscowHour < 21) {
+        // shoreline
+
+        whereBoss = "Shoreline (Sanatorium)";
+        bossDetails = "Sanitar @ Cottage / usual spawn<br>" +
+            "Reshala @ Resort east wing<br>" +
+            "Tagilla & Killa @ Resort west wing<br>" +
+            "Shturman @ Weather station<br>" +
+            "Glukhar @ Pier";
+    } else if(nowMoscowHour >= 22 || nowMoscowHour < 2) {
+        // interchange
+		// thanks to valdetero on reddit for the logic correction
+        whereBoss = "Interchange (Ultra)";
+        bossDetails = "Sanitar @ Goshan<br>" +
+            "Tagilla & Killa @ Food court (second floor, OLI side)<br>" +
+            "Reshala @ OLI<br>" +
+            "Glukhar @ near KIBA<br>" +
+            "Shturman @ IDEA (or right ouside)";
+    } else if(nowMoscowHour >= 2 && nowMoscowHour < 8) {
+        // woods
+        whereBoss = "Woods";
+        bossDetails = "Sanitar @ Scav bunker<br>" +
+            "Tagilla & Killa @ Checkpoint<br>" +
+            "Reshala @ Sunken village<br>" +
+            "Glukhar @ Scav village (northeast of map)<br>" +
+            "Shturman @ Sawmill";
+    } else {
+        whereBoss = "we don't know";
+        bossDetails = "It's unknown where the bosses go during this time. The wiki simply lists it as \"?\"";
+    }
+
+    document.getElementById("where").innerHTML = "Time now in Moscow: " + nowMoscow.format("HH:mm a")
+        + "<br>Time now where you are: " + now.format("HH:mm a")
+        + "<br><h3>Bosses are at: " + whereBoss + "</h3>";
+
+    document.getElementById("bossdet").innerHTML = bossDetails;
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    var i = 0;
+
+    setInterval(() => {
+        if(i == 60) location.reload();
+        var reloadLeft = 60-i;
+        document.getElementById("reloadtimer").innerHTML = "<i>Refreshing in " + reloadLeft + " seconds</i>";
+        i++;
+    },1000);
+
+    if(localStorage.getItem('theme') == 'dark'){
+	var element = document.body;
+	element.classList.toggle("darkmode");
+    }
+	
+    function darkmodeToggle() {
+       var element = document.body;
+	    if(element.classList.contains("darkmode")){
+		localStorage.setItem("theme", "light");
+	    }else{
+		localStorage.setItem("theme", "dark");
+	    }
+       element.classList.toggle("darkmode");
+    }
+    
+</script></body>
+</html>
